@@ -74,7 +74,9 @@
       box-shadow: 0 0 0 46px rgba(23, 101, 79, .025), 0 0 0 92px rgba(23, 101, 79, .022), 0 0 0 138px rgba(23, 101, 79, .018);
       pointer-events: none;
     }
-    .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 68px; }
+    .hero-grid { position: relative; display: grid; grid-template-columns: .92fr 1.08fr; grid-template-areas: "portrait copy"; align-items: center; gap: 68px; }
+    .hero-grid > div:first-child { grid-area: copy; }
+    .hero-grid > .visual-wrap { grid-area: portrait; }
     .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
     .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 5px rgba(241, 120, 92, .12); }
     h1, h2, h3, p { margin-top: 0; }
@@ -239,7 +241,7 @@
       .primary-nav a { padding: 12px 6px; border-bottom: 1px solid var(--line); }
       .primary-nav a:last-child { border-bottom: 0; }
       .hero { padding: 58px 0 55px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 25px; }
+      .hero-grid { grid-template-columns: 1fr; grid-template-areas: "portrait" "copy"; gap: 25px; }
       h1 { max-width: 520px; font-size: clamp(48px, 12vw, 70px); }
       .hero-copy { font-size: 16px; }
       .hero-actions { margin-top: 24px; }
