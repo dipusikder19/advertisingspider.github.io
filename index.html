@@ -8,6 +8,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Advertising Spider — Growth, made measurable">
   <meta property="og:description" content="Paid media and measurement that connect the clicks to the outcomes your business cares about.">
+  <meta property="og:image" content="https://dipusikder19.github.io/advertisingspider.github.io/assets/dipu-profile.jpg">
   <title>Advertising Spider — Performance marketing, made measurable</title>
   <style>
     :root {
@@ -292,6 +293,57 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
     }
+  
+    .portrait-wrap { min-height: 470px; }
+    .portrait-halo {
+      position: absolute; inset: 7% 0 4% 6%; border-radius: 48% 52% 44% 56% / 50% 44% 56% 50%;
+      background: linear-gradient(145deg, #e7f1db, #d5ead0); transform: rotate(-8deg);
+    }
+    .portrait-ring {
+      position: absolute; top: 3%; right: 1%; width: 130px; height: 130px;
+      border: 1px solid rgba(23,101,79,.18); border-radius: 50%;
+      box-shadow: 0 0 0 14px rgba(23,101,79,.035), 0 0 0 28px rgba(23,101,79,.025);
+    }
+    .portrait-card {
+      position: relative; z-index: 1; width: min(78%, 350px); height: 435px; margin: 0;
+      overflow: hidden; border: 8px solid #fff; border-radius: 48% 48% 24px 24px;
+      background: #edf1e9; box-shadow: 0 24px 64px rgba(24,44,35,.17); transform: rotate(2deg);
+    }
+    .portrait-card img { width: 100%; height: 100%; object-fit: cover; object-position: center 21%; }
+    .portrait-caption {
+      position: absolute; right: 13px; bottom: 13px; left: 13px; display: flex; align-items: center;
+      gap: 10px; padding: 11px 13px; border: 1px solid rgba(223,230,223,.9); border-radius: 14px;
+      background: rgba(255,255,255,.94); box-shadow: 0 7px 20px rgba(24,44,35,.08);
+    }
+    .portrait-caption-dot { width: 9px; height: 9px; flex: 0 0 auto; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 5px rgba(241,120,92,.12); }
+    .portrait-caption strong { display: block; color: var(--ink); font-size: 13px; line-height: 1.3; }
+    .portrait-caption small { display: block; color: var(--muted); font-size: 11px; line-height: 1.4; }
+    .portrait-badge {
+      position: absolute; right: -2px; bottom: 34px; z-index: 2; display: flex; align-items: center; gap: 10px;
+      padding: 12px 15px; border: 1px solid var(--line); border-radius: 15px; background: #fff;
+      box-shadow: 0 14px 36px rgba(24,44,35,.12); transform: rotate(-3deg);
+    }
+    .portrait-badge-icon { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border-radius: 11px; background: var(--green); color: var(--lime); }
+    .portrait-badge-icon svg { width: 18px; height: 18px; }
+    .portrait-badge strong { display: block; font-size: 11px; line-height: 1.35; }
+    .portrait-badge small { display: block; color: var(--muted); font-size: 10px; line-height: 1.4; }
+    @media (max-width: 960px) {
+      .portrait-wrap { min-height: 425px; }
+      .portrait-card { width: min(78%, 330px); height: 395px; }
+    }
+    @media (max-width: 720px) {
+      .portrait-wrap { min-height: 385px; margin: 0; }
+      .portrait-card { width: min(76%, 300px); height: 360px; }
+      .portrait-badge { right: 0; bottom: 14px; }
+      .portrait-ring { width: 100px; height: 100px; }
+    }
+    @media (max-width: 420px) {
+      .portrait-wrap { min-height: 340px; }
+      .portrait-card { width: min(78%, 260px); height: 320px; }
+      .portrait-badge { right: -3px; bottom: 7px; padding: 10px 12px; }
+      .portrait-badge-icon { width: 30px; height: 30px; }
+    }
+
   </style>
   <script type="application/ld+json">
   {
@@ -299,6 +351,7 @@
     "@type": "ProfessionalService",
     "name": "Advertising Spider",
     "description": "Performance marketing support across Google Ads, Meta Ads, PPC, GA4 and Google Tag Manager.",
+    "image": "https://dipusikder19.github.io/advertisingspider.github.io/assets/dipu-profile.jpg",
     "telephone": "+881677722090",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -358,35 +411,21 @@
             Built around your goals. Measured with care.
           </div>
         </div>
-        <div class="visual-wrap" aria-label="Illustration of a marketing performance dashboard">
-          <div class="visual-halo" aria-hidden="true"></div>
-          <div class="dashboard">
-            <div class="dash-top">
-              <div><div class="dash-label">The growth picture</div><h2 class="dash-title">See what moves the needle</h2></div>
-              <div class="live-pill"><span aria-hidden="true"></span> Clear signals</div>
-            </div>
-            <div class="dash-graph" aria-hidden="true">
-              <div class="graph-area">
-                <svg viewBox="0 0 320 150" preserveAspectRatio="none">
-                  <defs><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b5dc83" stop-opacity=".48"/><stop offset="1" stop-color="#b5dc83" stop-opacity="0"/></linearGradient></defs>
-                  <path d="M0 125 C28 112 38 120 62 98 S103 108 126 79 S157 92 183 70 S222 82 247 46 S282 58 320 18 V150 H0Z" fill="url(#areaFill)"/>
-                  <path d="M0 125 C28 112 38 120 62 98 S103 108 126 79 S157 92 183 70 S222 82 247 46 S282 58 320 18" fill="none" stroke="#17654f" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
-                  <circle cx="247" cy="46" r="5" fill="#f1785c" stroke="white" stroke-width="2"/>
-                </svg>
-              </div>
-              <div class="graph-side"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="dash-legend"><span>Strategy</span><span>Execution</span><span>Learning</span><span>Growth</span></div>
-            <div class="dash-divider"></div>
-            <div class="signal-row">
-              <div class="signal"><strong>Reach</strong><span>Find your audience</span></div>
-              <div class="signal"><strong>Intent</strong><span>Understand action</span></div>
-              <div class="signal"><strong>Impact</strong><span>Learn and improve</span></div>
-            </div>
-          </div>
-          <div class="orbit-card">
-            <div class="orbit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 9 12l3 2.6L20 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div><strong>Better decisions start here</strong><span>One clear view of performance</span></div>
+        <div class="visual-wrap portrait-wrap">
+          <div class="portrait-halo" aria-hidden="true"></div>
+          <div class="portrait-ring" aria-hidden="true"></div>
+          <figure class="portrait-card">
+            <img src="assets/dipu-profile.jpg" alt="Portrait of Dipu Sikder" width="640" height="820" fetchpriority="high">
+            <figcaption class="portrait-caption">
+              <span class="portrait-caption-dot" aria-hidden="true"></span>
+              <span><strong>Dipu Sikder</strong><small>Advertising Spider</small></span>
+            </figcaption>
+          </figure>
+          <div class="portrait-badge">
+            <span class="portrait-badge-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span><strong>Built around your goals</strong><small>Measured with care</small></span>
           </div>
         </div>
       </div>
