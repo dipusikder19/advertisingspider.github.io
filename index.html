@@ -346,6 +346,16 @@
       .portrait-badge-icon { width: 30px; height: 30px; }
     }
 
+  
+    .service-card { display: block; color: inherit; text-decoration: none; }
+    .service-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 15px; color: var(--green); font-size: 12px; font-weight: 800; }
+    .service-link span { display: inline-block; transition: transform .2s ease; }
+    .service-card:hover .service-link span { transform: translate(2px,-2px); }
+    @media (max-width: 420px) {
+      .service-icon { grid-row: span 3; }
+      .service-link { grid-column: 2; margin-top: 7px; }
+    }
+
   </style>
   <script type="application/ld+json">
   {
@@ -453,26 +463,30 @@
           <p>Build a practical marketing system around your audience, offer, and goals—with measurement that makes the next decision clearer.</p>
         </div>
         <div class="service-grid">
-          <article class="service-card">
+          <a class="service-card" href="services/google-ads/">
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5M8 10.8h5.6M10.8 8v5.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
             <h3>Google Ads</h3>
             <p>Reach people searching for what you offer. Build campaigns around intent, useful landing experiences, and business priorities.</p>
-          </article>
-          <article class="service-card">
+            <span class="service-link">Explore Google Ads <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="service-card" href="services/meta-ads/">
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M14.2 21v-8h2.7l.4-3.2h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.2H8v3.2h2.8v8h3.4Z" fill="currentColor"/></svg></div>
             <h3>Meta Ads</h3>
             <p>Plan and refine campaigns across Facebook and Instagram with audience, creative, and conversion signals working together.</p>
-          </article>
-          <article class="service-card">
+            <span class="service-link">Explore Meta Ads <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="service-card" href="services/ga4-analytics/">
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M7 15l4-4 3 2 5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="7" r="1.6" fill="currentColor"/></svg></div>
             <h3>GA4 analytics</h3>
             <p>Make your reporting more useful with clear event definitions, conversion measurement, and a view of what visitors do next.</p>
-          </article>
-          <article class="service-card">
+            <span class="service-link">Explore GA4 <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="service-card" href="services/gtm-tracking/">
             <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M5.6 5.6l2.8 2.8m7.2 7.2 2.8 2.8m0-12.8-2.8 2.8m-7.2 7.2-2.8 2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="4.1" stroke="currentColor" stroke-width="1.7"/></svg></div>
             <h3>GTM &amp; tracking</h3>
             <p>Organize tags, events, and conversion tracking so campaign decisions are grounded in data you can trust.</p>
-          </article>
+            <span class="service-link">Explore GTM & tracking <span aria-hidden="true">↗</span></span>
+          </a>
         </div>
       </div>
     </section>
