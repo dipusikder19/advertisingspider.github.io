@@ -63,6 +63,20 @@
     .primary-nav { display: flex; align-items: center; gap: 32px; }
     .primary-nav a { color: var(--ink-soft); font-size: 14px; font-weight: 650; text-decoration: none; transition: color .2s ease; }
     .primary-nav a:hover, .primary-nav a:focus-visible { color: var(--green); }
+    .nav-service-menu { position: relative; }
+    .nav-service-menu > summary { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: 14px; font-weight: 650; cursor: pointer; list-style: none; }
+    .nav-service-menu > summary::-webkit-details-marker { display: none; }
+    .nav-service-menu > summary::after { width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; content: ""; transform: rotate(45deg) translateY(-2px); transition: transform .18s ease; }
+    .nav-service-menu[open] > summary::after { transform: rotate(225deg) translate(-1px,-1px); }
+    .nav-service-menu > summary:hover, .nav-service-menu > summary:focus-visible { color: var(--green); }
+    .service-menu { position: absolute; top: 100%; left: -16px; z-index: 40; min-width: 268px; padding-top: 10px; opacity: 0; visibility: hidden; transform: translateY(5px); transition: opacity .16s ease, transform .16s ease, visibility .16s ease; }
+    .nav-service-menu[open] .service-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .service-menu-panel { overflow: hidden; padding: 7px; border: 1px solid var(--line); border-radius: 15px; background: var(--white); box-shadow: 0 18px 44px rgba(24,44,35,.14); }
+    .primary-nav .service-menu a { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border: 0; border-radius: 9px; color: var(--ink-soft); font-size: 13px; line-height: 1.35; text-decoration: none; white-space: nowrap; }
+    .primary-nav .service-menu a:hover, .primary-nav .service-menu a:focus-visible { background: #f1f6ed; color: var(--green); }
+    .service-menu a span { font-weight: 750; }
+    .service-menu a small { color: var(--muted); font-size: 11px; font-weight: 500; }
+    .primary-nav .service-menu .service-menu-all { align-items: center; flex-direction: row; justify-content: space-between; margin-top: 5px; border-top: 1px solid var(--line); border-radius: 0 0 9px 9px; color: var(--green); font-weight: 750; }
     .header-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 17px; border: 1px solid var(--ink); border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 750; text-decoration: none; transition: transform .2s ease, background .2s ease; }
     .header-cta:hover { background: var(--green); border-color: var(--green); transform: translateY(-2px); }
     .menu-toggle { display: none; align-items: center; gap: 8px; border: 0; background: transparent; color: var(--ink); font-weight: 700; cursor: pointer; }
@@ -240,6 +254,11 @@
       .primary-nav.is-open { display: flex; flex-direction: column; }
       .primary-nav a { padding: 12px 6px; border-bottom: 1px solid var(--line); }
       .primary-nav a:last-child { border-bottom: 0; }
+      .nav-service-menu { width: 100%; }
+      .nav-service-menu > summary { display: flex; width: 100%; justify-content: space-between; padding: 12px 6px; border-bottom: 1px solid var(--line); }
+      .service-menu { left: 0; min-width: min(268px, 100%); }
+      .primary-nav .service-menu a { padding: 10px 12px; border: 0; }
+
       .hero { padding: 58px 0 55px; }
       .hero-grid { grid-template-columns: 1fr; grid-template-areas: "portrait" "copy"; gap: 25px; }
       h1 { max-width: 520px; font-size: clamp(48px, 12vw, 70px); }
@@ -391,7 +410,15 @@
         <span class="brand-word">Advertising Spider</span>
       </a>
       <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
-        <a href="#services">Services</a>
+        <details class="nav-service-menu">
+        <summary>Services</summary>
+        <div class="service-menu"><div class="service-menu-panel">
+        <a href="services/google-ads/"><span>Google Ads</span><small>Search, shopping &amp; Performance Max</small></a>
+        <a href="services/meta-ads/"><span>Meta Ads</span><small>Facebook &amp; Instagram campaigns</small></a>
+        <a href="services/ga4-analytics/"><span>GA4 Analytics</span><small>Reporting and useful insights</small></a>
+        <a href="services/gtm-tracking/"><span>GTM &amp; Tracking</span><small>Events, pixels and conversions</small></a>
+        <a class="service-menu-all" href="#services">Explore all services <span aria-hidden="true">↗</span></a>
+        </div></div></details>
         <a href="#approach">Our approach</a>
         <a href="#measurement">Measurement</a>
         <a href="#faq">FAQ</a>
@@ -614,6 +641,50 @@
       const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
       menuToggle.setAttribute("aria-expanded", String(!isOpen));
       primaryNav.classList.toggle("is-open", !isOpen);
+    });
+    document.querySelectorAll(".nav-service-menu").forEach((serviceMenu) => {
+      let openedByHover = false;
+      const summary = serviceMenu.querySelector("summary");
+      serviceMenu.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse" || event.pointerType === "pen") {
+          serviceMenu.open = true;
+          openedByHover = true;
+        }
+      });
+      serviceMenu.addEventListener("pointerleave", () => {
+        if (openedByHover && !serviceMenu.contains(document.activeElement)) {
+          serviceMenu.open = false;
+          openedByHover = false;
+        }
+      });
+      serviceMenu.addEventListener("focusin", () => { serviceMenu.open = true; });
+      serviceMenu.addEventListener("focusout", (event) => {
+        if (!serviceMenu.contains(event.relatedTarget)) {
+          serviceMenu.open = false;
+          openedByHover = false;
+        }
+      });
+      summary.addEventListener("click", (event) => {
+        if (serviceMenu.open && openedByHover) {
+          event.preventDefault();
+          openedByHover = false;
+        } else {
+          openedByHover = false;
+        }
+      });
+      document.addEventListener("click", (event) => {
+        if (!serviceMenu.contains(event.target)) {
+          serviceMenu.open = false;
+          openedByHover = false;
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && serviceMenu.open) {
+          serviceMenu.open = false;
+          openedByHover = false;
+          summary.focus();
+        }
+      });
     });
     primaryNav.addEventListener("click", (event) => {
       if (event.target.closest("a")) {
