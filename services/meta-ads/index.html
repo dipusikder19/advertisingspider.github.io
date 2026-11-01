@@ -17,7 +17,15 @@
     <div class="shell header-inner">
       <a class="brand" href="../../" aria-label="Advertising Spider home"><span class="brand-mark"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="5" fill="currentColor"/><ellipse cx="20" cy="20" rx="7.5" ry="15" stroke="currentColor" stroke-width="1.7"/><ellipse cx="20" cy="20" rx="15" ry="7.5" stroke="currentColor" stroke-width="1.7"/><path d="M9 9l22 22M31 9 9 31" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="31" cy="9" r="2.3" fill="#f1785c"/></svg></span><span>Advertising Spider</span></a>
       <nav class="primary-nav" aria-label="Main navigation">
-        <a href="../../#services">Services</a>
+        <details class="nav-service-menu">
+        <summary>Services</summary>
+        <div class="service-menu"><div class="service-menu-panel">
+        <a href="../../services/google-ads/"><span>Google Ads</span><small>Search, shopping &amp; Performance Max</small></a>
+        <a href="../../services/meta-ads/"><span>Meta Ads</span><small>Facebook &amp; Instagram campaigns</small></a>
+        <a href="../../services/ga4-analytics/"><span>GA4 Analytics</span><small>Reporting and useful insights</small></a>
+        <a href="../../services/gtm-tracking/"><span>GTM &amp; Tracking</span><small>Events, pixels and conversions</small></a>
+        <a class="service-menu-all" href="../../#services">Explore all services <span aria-hidden="true">↗</span></a>
+        </div></div></details>
         <a href="../../#approach">Our approach</a>
         <a href="../../#faq">FAQ</a>
       </nav>
@@ -98,5 +106,51 @@
       <div class="footer-links"><a href="../../#services">All services</a><a href="../../#approach">Our approach</a><a href="https://wa.me/881677722090?text=Hi%20Advertising%20Spider%2C%20I'm%20interested%20in%20Meta%20Ads." target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
     </div>
   </footer>
+  <script>
+    document.querySelectorAll(".nav-service-menu").forEach((serviceMenu) => {
+      let openedByHover = false;
+      const summary = serviceMenu.querySelector("summary");
+      serviceMenu.addEventListener("pointerenter", (event) => {
+        if (event.pointerType === "mouse" || event.pointerType === "pen") {
+          serviceMenu.open = true;
+          openedByHover = true;
+        }
+      });
+      serviceMenu.addEventListener("pointerleave", () => {
+        if (openedByHover && !serviceMenu.contains(document.activeElement)) {
+          serviceMenu.open = false;
+          openedByHover = false;
+        }
+      });
+      serviceMenu.addEventListener("focusin", () => { serviceMenu.open = true; });
+      serviceMenu.addEventListener("focusout", (event) => {
+        if (!serviceMenu.contains(event.relatedTarget)) {
+          serviceMenu.open = false;
+          openedByHover = false;
+        }
+      });
+      summary.addEventListener("click", (event) => {
+        if (serviceMenu.open && openedByHover) {
+          event.preventDefault();
+          openedByHover = false;
+        } else {
+          openedByHover = false;
+        }
+      });
+      document.addEventListener("click", (event) => {
+        if (!serviceMenu.contains(event.target)) {
+          serviceMenu.open = false;
+          openedByHover = false;
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && serviceMenu.open) {
+          serviceMenu.open = false;
+          openedByHover = false;
+          summary.focus();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
