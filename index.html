@@ -1,14 +1,578 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advertising Spider | Digital Marketing</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f4">
+  <meta name="description" content="Advertising Spider helps businesses make smarter use of Google Ads, Meta Ads, PPC, GA4 and Google Tag Manager.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Advertising Spider — Growth, made measurable">
+  <meta property="og:description" content="Paid media and measurement that connect the clicks to the outcomes your business cares about.">
+  <title>Advertising Spider — Performance marketing, made measurable</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17221f;
+      --ink-soft: #35413c;
+      --muted: #66736d;
+      --paper: #f6f8f4;
+      --white: #fff;
+      --line: #dfe6df;
+      --green: #17654f;
+      --green-dark: #104b3b;
+      --lime: #c9f279;
+      --lime-soft: #e9f6d5;
+      --coral: #f1785c;
+      --blue: #cfe6e7;
+      --shadow: 0 24px 70px rgba(24, 44, 35, .10);
+      --radius: 22px;
+      --font: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.65 var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    img, svg { display: block; max-width: 100%; }
+    .skip-link {
+      position: fixed; left: 16px; top: 12px; z-index: 100;
+      padding: 10px 14px; border-radius: 8px; background: var(--ink); color: #fff;
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .shell { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      border-bottom: 1px solid rgba(223, 230, 223, .8);
+      background: rgba(246, 248, 244, .92);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 78px; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-size: 17px; font-weight: 800; letter-spacing: -.045em; white-space: nowrap; }
+    .brand-mark { display: grid; width: 37px; height: 37px; place-items: center; color: var(--green); }
+    .brand-mark svg { width: 36px; height: 36px; }
+    .brand-word { color: var(--ink); }
+    .primary-nav { display: flex; align-items: center; gap: 32px; }
+    .primary-nav a { color: var(--ink-soft); font-size: 14px; font-weight: 650; text-decoration: none; transition: color .2s ease; }
+    .primary-nav a:hover, .primary-nav a:focus-visible { color: var(--green); }
+    .header-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 17px; border: 1px solid var(--ink); border-radius: 999px; background: var(--ink); color: #fff; font-size: 13px; font-weight: 750; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+    .header-cta:hover { background: var(--green); border-color: var(--green); transform: translateY(-2px); }
+    .menu-toggle { display: none; align-items: center; gap: 8px; border: 0; background: transparent; color: var(--ink); font-weight: 700; cursor: pointer; }
+    .menu-toggle svg { width: 20px; height: 20px; }
+    .hero { position: relative; overflow: hidden; padding: 90px 0 82px; }
+    .hero::before {
+      position: absolute; top: -280px; right: -190px; width: 720px; height: 720px;
+      border: 1px solid rgba(23, 101, 79, .10); border-radius: 50%; content: "";
+      box-shadow: 0 0 0 46px rgba(23, 101, 79, .025), 0 0 0 92px rgba(23, 101, 79, .022), 0 0 0 138px rgba(23, 101, 79, .018);
+      pointer-events: none;
+    }
+    .hero-grid { position: relative; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 68px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--green); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 5px rgba(241, 120, 92, .12); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 680px; margin: 22px 0 20px; font-size: clamp(48px, 6.3vw, 78px); line-height: .99; letter-spacing: -.075em; font-weight: 780; }
+    h1 span { color: var(--green); }
+    .hero-copy { max-width: 580px; color: var(--muted); font-size: 18px; line-height: 1.72; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 32px; }
+    .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 10px; padding: 0 21px; border: 1px solid transparent; border-radius: 999px; font-size: 14px; font-weight: 800; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--green); color: #fff; box-shadow: 0 10px 24px rgba(23, 101, 79, .18); }
+    .button-primary:hover { background: var(--green-dark); box-shadow: 0 14px 28px rgba(23, 101, 79, .23); }
+    .button-light { border-color: var(--line); background: rgba(255,255,255,.5); color: var(--ink); }
+    .button-light:hover { border-color: #bdcfc1; background: #fff; }
+    .button svg { width: 17px; height: 17px; }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 26px; color: var(--muted); font-size: 12px; font-weight: 600; }
+    .hero-note svg { width: 17px; height: 17px; color: var(--green); flex: 0 0 auto; }
+    .visual-wrap { position: relative; min-height: 420px; display: grid; place-items: center; }
+    .visual-halo { position: absolute; inset: 8% 0 3% 7%; border-radius: 44% 56% 47% 53% / 48% 45% 55% 52%; background: var(--lime-soft); transform: rotate(-8deg); }
+    .dashboard {
+      position: relative; width: min(100%, 460px); padding: 23px; border: 1px solid rgba(223, 230, 223, .9);
+      border-radius: 24px; background: rgba(255,255,255,.94); box-shadow: var(--shadow); transform: rotate(2deg);
+    }
+    .dash-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+    .dash-label { color: var(--muted); font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    .dash-title { margin: 4px 0 0; font-size: 20px; letter-spacing: -.045em; }
+    .live-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 999px; background: #edf7e7; color: var(--green); font-size: 10px; font-weight: 800; white-space: nowrap; }
+    .live-pill span { width: 6px; height: 6px; border-radius: 50%; background: #64aa62; }
+    .dash-graph { display: grid; grid-template-columns: 1fr 68px; align-items: end; gap: 18px; height: 154px; padding: 14px 0 0; }
+    .graph-area { position: relative; height: 100%; border-bottom: 1px solid var(--line); background: repeating-linear-gradient(to bottom, transparent 0 37px, rgba(223,230,223,.75) 38px 39px); }
+    .graph-area svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .graph-side { display: flex; height: 100%; flex-direction: column; justify-content: flex-end; gap: 8px; padding-bottom: 10px; }
+    .graph-side span { display: block; height: 9px; border-radius: 99px; background: #e8efe8; }
+    .graph-side span:nth-child(1) { width: 88%; background: var(--lime); }
+    .graph-side span:nth-child(2) { width: 70%; }
+    .graph-side span:nth-child(3) { width: 54%; }
+    .graph-side span:nth-child(4) { width: 36%; }
+    .dash-legend { display: flex; justify-content: space-between; gap: 10px; margin: 9px 0 21px; color: #87928c; font-size: 10px; }
+    .dash-divider { border-top: 1px solid var(--line); }
+    .signal-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding-top: 17px; }
+    .signal { padding: 12px 10px; border-radius: 13px; background: #f6f8f4; }
+    .signal strong { display: block; font-size: 13px; letter-spacing: -.02em; }
+    .signal span { color: var(--muted); font-size: 10px; }
+    .orbit-card { position: absolute; right: -16px; bottom: 16px; display: flex; align-items: center; gap: 11px; padding: 13px 16px; border: 1px solid var(--line); border-radius: 15px; background: #fff; box-shadow: 0 14px 36px rgba(24,44,35,.10); transform: rotate(-3deg); }
+    .orbit-icon { display: grid; width: 36px; height: 36px; place-items: center; border-radius: 11px; background: var(--green); color: var(--lime); }
+    .orbit-icon svg { width: 20px; height: 20px; }
+    .orbit-card strong { display: block; font-size: 12px; }
+    .orbit-card span { display: block; color: var(--muted); font-size: 10px; }
+    .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.44); }
+    .trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 23px 0; }
+    .trust-label { color: var(--muted); font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    .trust-items { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 13px 28px; color: var(--ink-soft); font-size: 13px; font-weight: 750; }
+    .trust-items span { display: inline-flex; align-items: center; gap: 8px; }
+    .trust-items svg { width: 16px; height: 16px; color: var(--green); }
+    .section { padding: 104px 0; }
+    .section-heading { max-width: 690px; margin: 0 auto 48px; text-align: center; }
+    .section-heading .eyebrow { justify-content: center; }
+    .section-heading h2 { margin: 16px 0 14px; font-size: clamp(35px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -.065em; }
+    .section-heading p { margin: 0 auto; max-width: 570px; color: var(--muted); font-size: 16px; }
+    .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .service-card { min-height: 260px; padding: 25px 23px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+    .service-card:hover { transform: translateY(-5px); border-color: #bfcec3; box-shadow: 0 18px 40px rgba(24,44,35,.07); }
+    .service-icon { display: grid; width: 48px; height: 48px; margin-bottom: 25px; place-items: center; border-radius: 15px; background: var(--lime-soft); color: var(--green); }
+    .service-card:nth-child(2) .service-icon { background: #fce5dc; color: #a34a36; }
+    .service-card:nth-child(3) .service-icon { background: #e1eff0; color: #326d70; }
+    .service-card:nth-child(4) .service-icon { background: #eee8f7; color: #6e57a2; }
+    .service-icon svg { width: 23px; height: 23px; }
+    .service-card h3 { margin: 0 0 10px; font-size: 18px; letter-spacing: -.04em; }
+    .service-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .approach { background: #eef3ec; }
+    .approach-grid { display: grid; grid-template-columns: .84fr 1.16fr; gap: 75px; align-items: start; }
+    .approach-intro { position: sticky; top: 125px; }
+    .approach-intro .eyebrow { margin-bottom: 16px; }
+    .approach-intro h2 { margin: 0 0 17px; font-size: clamp(36px, 4.2vw, 52px); line-height: 1.04; letter-spacing: -.07em; }
+    .approach-intro p { color: var(--muted); }
+    .text-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 9px; color: var(--green); font-size: 14px; font-weight: 800; text-decoration: none; }
+    .text-link svg { width: 16px; height: 16px; transition: transform .2s ease; }
+    .text-link:hover svg { transform: translateX(4px); }
+    .steps { display: grid; gap: 13px; }
+    .step { display: grid; grid-template-columns: 56px 1fr; gap: 19px; padding: 22px; border: 1px solid #d8e2d8; border-radius: 18px; background: rgba(255,255,255,.74); }
+    .step-number { display: grid; width: 46px; height: 46px; place-items: center; border-radius: 14px; background: var(--ink); color: var(--lime); font-size: 13px; font-weight: 850; }
+    .step h3 { margin: 1px 0 7px; font-size: 18px; letter-spacing: -.04em; }
+    .step p { margin: 0; color: var(--muted); font-size: 14px; }
+    .measure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .measure-copy .eyebrow { margin-bottom: 16px; }
+    .measure-copy h2 { margin: 0 0 18px; font-size: clamp(36px, 4.3vw, 52px); line-height: 1.04; letter-spacing: -.07em; }
+    .measure-copy > p { color: var(--muted); }
+    .check-list { display: grid; gap: 13px; margin: 25px 0 0; padding: 0; list-style: none; }
+    .check-list li { display: flex; align-items: flex-start; gap: 11px; color: var(--ink-soft); font-size: 14px; }
+    .check { display: grid; width: 21px; height: 21px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: var(--lime-soft); color: var(--green); }
+    .check svg { width: 12px; height: 12px; }
+    .measure-card { position: relative; padding: 28px; border-radius: 26px; background: var(--ink); color: #fff; overflow: hidden; }
+    .measure-card::after { position: absolute; right: -70px; bottom: -115px; width: 280px; height: 280px; border: 1px solid rgba(201,242,121,.24); border-radius: 50%; box-shadow: 0 0 0 30px rgba(201,242,121,.04), 0 0 0 60px rgba(201,242,121,.03); content: ""; }
+    .measure-top { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+    .measure-top span { color: #b7c8bc; font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    .measure-top h3 { margin: 5px 0 0; font-size: 21px; letter-spacing: -.04em; }
+    .measure-mark { display: grid; width: 43px; height: 43px; place-items: center; border: 1px solid rgba(201,242,121,.32); border-radius: 14px; color: var(--lime); }
+    .measure-mark svg { width: 22px; height: 22px; }
+    .funnel { position: relative; z-index: 1; display: grid; gap: 10px; margin-top: 29px; }
+    .funnel-row { display: grid; grid-template-columns: 96px 1fr 72px; align-items: center; gap: 12px; }
+    .funnel-row > span:first-child { color: #d6e1d8; font-size: 12px; }
+    .funnel-bar { height: 12px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.12); }
+    .funnel-bar i { display: block; height: 100%; border-radius: inherit; background: var(--lime); }
+    .funnel-row:nth-child(2) .funnel-bar i { background: #83c69a; }
+    .funnel-row:nth-child(3) .funnel-bar i { background: #73b7b2; }
+    .funnel-row:nth-child(4) .funnel-bar i { background: #ef9a72; }
+    .funnel-row small { color: #aec0b4; font-size: 10px; text-align: right; }
+    .measure-foot { position: relative; z-index: 1; margin: 25px 0 0; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.14); color: #b7c8bc; font-size: 11px; }
+    .faq { background: #fff; }
+    .faq-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 70px; align-items: start; }
+    .faq-copy .eyebrow { margin-bottom: 16px; }
+    .faq-copy h2 { margin: 0 0 16px; font-size: clamp(36px, 4.2vw, 50px); line-height: 1.05; letter-spacing: -.07em; }
+    .faq-copy p { color: var(--muted); }
+    .faq-list { display: grid; gap: 10px; }
+    .faq-list details { padding: 0 20px; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    .faq-list summary { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 15px; cursor: pointer; list-style: none; font-size: 15px; font-weight: 750; letter-spacing: -.02em; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; display: grid; width: 27px; height: 27px; flex: 0 0 auto; place-items: center; border-radius: 50%; background: var(--lime-soft); color: var(--green); font-size: 18px; font-weight: 500; transition: transform .2s ease; }
+    .faq-list details[open] summary::after { transform: rotate(45deg); }
+    .faq-list details p { margin: -2px 0 20px; color: var(--muted); font-size: 14px; }
+    .contact { padding: 72px 0 88px; }
+    .contact-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 35px; padding: 51px 56px; border-radius: 28px; background: var(--lime); }
+    .contact-panel::before { position: absolute; right: 130px; top: -150px; width: 340px; height: 340px; border: 1px solid rgba(23,34,31,.15); border-radius: 50%; box-shadow: 0 0 0 35px rgba(23,34,31,.035), 0 0 0 70px rgba(23,34,31,.025); content: ""; }
+    .contact-copy, .contact-action { position: relative; z-index: 1; }
+    .contact-copy .eyebrow { color: var(--green-dark); }
+    .contact-copy h2 { max-width: 660px; margin: 13px 0 12px; font-size: clamp(34px, 4.3vw, 53px); line-height: 1.04; letter-spacing: -.07em; }
+    .contact-copy p { max-width: 540px; margin: 0; color: #40594a; }
+    .contact-action { display: grid; justify-items: start; gap: 11px; }
+    .whatsapp-button { display: inline-flex; min-height: 54px; align-items: center; justify-content: center; gap: 10px; padding: 0 19px; border: 1px solid var(--ink); border-radius: 999px; background: var(--ink); color: #fff; font-size: 14px; font-weight: 800; text-decoration: none; transition: transform .2s ease, background .2s ease; }
+    .whatsapp-button:hover { transform: translateY(-2px); background: var(--green-dark); }
+    .whatsapp-button svg { width: 19px; height: 19px; }
+    .phone-link { display: inline-flex; align-items: center; gap: 7px; color: var(--ink); font-size: 13px; font-weight: 750; text-decoration: none; }
+    .phone-link:hover { text-decoration: underline; }
+    .site-footer { border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; min-height: 96px; align-items: center; justify-content: space-between; gap: 22px; }
+    .footer-note { margin: 0; color: var(--muted); font-size: 12px; }
+    .footer-links { display: flex; align-items: center; gap: 20px; }
+    .footer-links a { color: var(--ink-soft); font-size: 12px; font-weight: 700; text-decoration: none; }
+    .footer-links a:hover { color: var(--green); }
+    :focus-visible { outline: 3px solid #e67e60; outline-offset: 4px; }
+    @media (max-width: 960px) {
+      .hero { padding: 70px 0; }
+      .hero-grid { gap: 30px; }
+      .visual-wrap { min-height: 370px; }
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .approach-grid, .faq-grid { gap: 42px; }
+      .measure-grid { gap: 40px; }
+      .contact-panel { padding: 42px; }
+    }
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 36px, 560px); }
+      .header-inner { min-height: 70px; gap: 12px; }
+      .brand { font-size: 16px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .header-cta { display: none; }
+      .menu-toggle { display: inline-flex; padding: 9px 0 9px 12px; }
+      .primary-nav {
+        position: absolute; top: calc(100% + 1px); left: 0; right: 0; display: none;
+        align-items: stretch; gap: 0; padding: 8px 18px 16px; border-bottom: 1px solid var(--line);
+        background: var(--paper); box-shadow: 0 18px 30px rgba(24,44,35,.08);
+      }
+      .primary-nav.is-open { display: flex; flex-direction: column; }
+      .primary-nav a { padding: 12px 6px; border-bottom: 1px solid var(--line); }
+      .primary-nav a:last-child { border-bottom: 0; }
+      .hero { padding: 58px 0 55px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 25px; }
+      h1 { max-width: 520px; font-size: clamp(48px, 12vw, 70px); }
+      .hero-copy { font-size: 16px; }
+      .hero-actions { margin-top: 24px; }
+      .visual-wrap { min-height: 345px; margin: 0 -3px; }
+      .dashboard { padding: 18px; transform: rotate(1deg); }
+      .orbit-card { right: -1px; bottom: 0; }
+      .trust-inner { align-items: flex-start; flex-direction: column; gap: 13px; padding: 18px 0; }
+      .trust-items { justify-content: flex-start; gap: 11px 18px; font-size: 12px; }
+      .section { padding: 76px 0; }
+      .section-heading { margin-bottom: 32px; text-align: left; }
+      .section-heading .eyebrow { justify-content: flex-start; }
+      .section-heading h2 { font-size: 40px; }
+      .section-heading p { margin-left: 0; font-size: 15px; }
+      .service-grid { gap: 11px; }
+      .service-card { min-height: 0; padding: 20px 17px; }
+      .service-icon { width: 43px; height: 43px; margin-bottom: 19px; }
+      .service-card h3 { font-size: 16px; }
+      .service-card p { font-size: 12px; }
+      .approach-grid, .measure-grid, .faq-grid { grid-template-columns: 1fr; gap: 35px; }
+      .approach-intro { position: static; }
+      .approach-intro h2, .measure-copy h2, .faq-copy h2 { font-size: 40px; }
+      .step { grid-template-columns: 45px 1fr; gap: 13px; padding: 17px; }
+      .step-number { width: 40px; height: 40px; }
+      .measure-card { padding: 22px 18px; }
+      .funnel-row { grid-template-columns: 80px 1fr 54px; gap: 8px; }
+      .contact { padding: 56px 0 65px; }
+      .contact-panel { grid-template-columns: 1fr; gap: 27px; padding: 32px 24px; }
+      .contact-panel::before { right: -140px; }
+      .contact-copy h2 { font-size: 39px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding: 24px 0; }
+      .footer-links { flex-wrap: wrap; gap: 12px 18px; }
+    }
+    @media (max-width: 420px) {
+      .shell { width: calc(100% - 30px); }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .visual-wrap { min-height: 310px; }
+      .dash-title { font-size: 17px; }
+      .dash-graph { grid-template-columns: 1fr 48px; height: 125px; }
+      .signal-row { gap: 7px; }
+      .signal { padding: 10px 8px; }
+      .signal strong { font-size: 11px; }
+      .signal span { font-size: 9px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card { display: grid; grid-template-columns: 44px 1fr; column-gap: 13px; }
+      .service-icon { grid-row: span 2; margin: 0; }
+      .service-card h3 { align-self: end; margin-bottom: 4px; }
+      .faq-list details { padding: 0 15px; }
+      .faq-list summary { font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Advertising Spider",
+    "description": "Performance marketing support across Google Ads, Meta Ads, PPC, GA4 and Google Tag Manager.",
+    "telephone": "+881677722090",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+881677722090",
+      "contactType": "business inquiries",
+      "url": "https://wa.me/881677722090"
+    }
+  }
+  </script>
 </head>
 <body>
-    <h1>Welcome to Advertising Spider!</h1>
-    <p>Google Ads | Meta Ads | PPC | GA4 | GTM</p>
-    <h2>Strategize. Execute. Optimize. Scale.</h2>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="Advertising Spider home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="5" fill="currentColor"/>
+            <ellipse cx="20" cy="20" rx="7.5" ry="15" stroke="currentColor" stroke-width="1.7"/>
+            <ellipse cx="20" cy="20" rx="15" ry="7.5" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M9 9l22 22M31 9 9 31" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="31" cy="9" r="2.3" fill="#f1785c"/>
+          </svg>
+        </span>
+        <span class="brand-word">Advertising Spider</span>
+      </a>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#approach">Our approach</a>
+        <a href="#measurement">Measurement</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="header-cta" href="https://wa.me/881677722090?text=Hi%20Advertising%20Spider%2C%20I%27d%20like%20to%20discuss%20my%20marketing%20goals." target="_blank" rel="noopener noreferrer">Let’s talk <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span>Menu</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Performance marketing, made measurable</div>
+          <h1>Make every<br>click count<span>.</span></h1>
+          <p class="hero-copy">Paid media and measurement that connect the clicks to the outcomes your business cares about. Clear strategy, thoughtful execution, and useful data at every step.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://wa.me/881677722090?text=Hi%20Advertising%20Spider%2C%20I%27d%20like%20to%20discuss%20my%20marketing%20goals." target="_blank" rel="noopener noreferrer">
+              Plan your next campaign
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="button button-light" href="#services">Explore services</a>
+          </div>
+          <div class="hero-note">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.2 16 4.5v4.6c0 3.7-2.5 6.8-6 8.7-3.5-1.9-6-5-6-8.7V4.5l6-2.3Z" stroke="currentColor" stroke-width="1.5"/><path d="m7 9.8 2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Built around your goals. Measured with care.
+          </div>
+        </div>
+        <div class="visual-wrap" aria-label="Illustration of a marketing performance dashboard">
+          <div class="visual-halo" aria-hidden="true"></div>
+          <div class="dashboard">
+            <div class="dash-top">
+              <div><div class="dash-label">The growth picture</div><h2 class="dash-title">See what moves the needle</h2></div>
+              <div class="live-pill"><span aria-hidden="true"></span> Clear signals</div>
+            </div>
+            <div class="dash-graph" aria-hidden="true">
+              <div class="graph-area">
+                <svg viewBox="0 0 320 150" preserveAspectRatio="none">
+                  <defs><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b5dc83" stop-opacity=".48"/><stop offset="1" stop-color="#b5dc83" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M0 125 C28 112 38 120 62 98 S103 108 126 79 S157 92 183 70 S222 82 247 46 S282 58 320 18 V150 H0Z" fill="url(#areaFill)"/>
+                  <path d="M0 125 C28 112 38 120 62 98 S103 108 126 79 S157 92 183 70 S222 82 247 46 S282 58 320 18" fill="none" stroke="#17654f" stroke-width="3" vector-effect="non-scaling-stroke" stroke-linecap="round"/>
+                  <circle cx="247" cy="46" r="5" fill="#f1785c" stroke="white" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="graph-side"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="dash-legend"><span>Strategy</span><span>Execution</span><span>Learning</span><span>Growth</span></div>
+            <div class="dash-divider"></div>
+            <div class="signal-row">
+              <div class="signal"><strong>Reach</strong><span>Find your audience</span></div>
+              <div class="signal"><strong>Intent</strong><span>Understand action</span></div>
+              <div class="signal"><strong>Impact</strong><span>Learn and improve</span></div>
+            </div>
+          </div>
+          <div class="orbit-card">
+            <div class="orbit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 9 12l3 2.6L20 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Better decisions start here</strong><span>One clear view of performance</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust" aria-label="Areas of expertise">
+      <div class="shell trust-inner">
+        <span class="trust-label">Focused on the full journey</span>
+        <div class="trust-items">
+          <span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Google Ads</span>
+          <span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Meta Ads</span>
+          <span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>PPC strategy</span>
+          <span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>GA4 &amp; GTM</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section" id="services">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> What we do</div>
+          <h2>Every channel has a job.<br>Make it work together.</h2>
+          <p>Build a practical marketing system around your audience, offer, and goals—with measurement that makes the next decision clearer.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7"/><path d="m16 16 4.5 4.5M8 10.8h5.6M10.8 8v5.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+            <h3>Google Ads</h3>
+            <p>Reach people searching for what you offer. Build campaigns around intent, useful landing experiences, and business priorities.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M14.2 21v-8h2.7l.4-3.2h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.2H8v3.2h2.8v8h3.4Z" fill="currentColor"/></svg></div>
+            <h3>Meta Ads</h3>
+            <p>Plan and refine campaigns across Facebook and Instagram with audience, creative, and conversion signals working together.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M7 15l4-4 3 2 5-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="7" r="1.6" fill="currentColor"/></svg></div>
+            <h3>GA4 analytics</h3>
+            <p>Make your reporting more useful with clear event definitions, conversion measurement, and a view of what visitors do next.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M5.6 5.6l2.8 2.8m7.2 7.2 2.8 2.8m0-12.8-2.8 2.8m-7.2 7.2-2.8 2.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="12" r="4.1" stroke="currentColor" stroke-width="1.7"/></svg></div>
+            <h3>GTM &amp; tracking</h3>
+            <p>Organize tags, events, and conversion tracking so campaign decisions are grounded in data you can trust.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach" id="approach">
+      <div class="shell approach-grid">
+        <div class="approach-intro">
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A clear process</div>
+          <h2>Thoughtful work.<br>Useful progress.</h2>
+          <p>Good campaigns come from understanding the whole picture. We start with your goals and keep learning as the work moves forward.</p>
+          <a class="text-link" href="https://wa.me/881677722090?text=Hi%20Advertising%20Spider%2C%20I%27d%20like%20to%20discuss%20my%20marketing%20goals." target="_blank" rel="noopener noreferrer">
+            Talk through your goals
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+        <div class="steps">
+          <article class="step"><div class="step-number">01</div><div><h3>Get the context</h3><p>Understand your offer, audience, current campaigns, and what a meaningful result looks like for your business.</p></div></article>
+          <article class="step"><div class="step-number">02</div><div><h3>Build with purpose</h3><p>Set a focused plan for channel, targeting, creative, landing experience, and measurement before scaling activity.</p></div></article>
+          <article class="step"><div class="step-number">03</div><div><h3>Learn and improve</h3><p>Review the signals, explain what they mean, and use those findings to make the next round of decisions.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="measurement">
+      <div class="shell measure-grid">
+        <div class="measure-copy">
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Measurement that matters</div>
+          <h2>Know what happened.<br>Know what to do next.</h2>
+          <p>Good reporting should make the path from ad spend to business outcome easier to understand. We help bring campaign and analytics signals into one practical view.</p>
+          <ul class="check-list">
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Conversion events mapped to real actions</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Campaigns reviewed with consistent definitions</li>
+            <li><span class="check"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Clear next steps, not just more charts</li>
+          </ul>
+        </div>
+        <div class="measure-card" aria-label="Illustrative marketing measurement flow">
+          <div class="measure-top">
+            <div><span>Connected signals</span><h3>From first touch to action</h3></div>
+            <div class="measure-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18V6m0 12h16M7 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          </div>
+          <div class="funnel">
+            <div class="funnel-row"><span>Reach</span><div class="funnel-bar"><i style="width:91%"></i></div><small>Audience</small></div>
+            <div class="funnel-row"><span>Engagement</span><div class="funnel-bar"><i style="width:72%"></i></div><small>Interest</small></div>
+            <div class="funnel-row"><span>Conversion</span><div class="funnel-bar"><i style="width:52%"></i></div><small>Action</small></div>
+            <div class="funnel-row"><span>Learning</span><div class="funnel-bar"><i style="width:34%"></i></div><small>Next move</small></div>
+          </div>
+          <p class="measure-foot">A simple illustration of how campaign signals can connect—not client performance data.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq">
+      <div class="shell faq-grid">
+        <div class="faq-copy">
+          <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> A few useful answers</div>
+          <h2>Before we get started.</h2>
+          <p>Every business is different. Here are a few things we can work through together.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Can you help with an account that is already running?</summary>
+            <p>Yes. We can review the account structure, targeting, conversion setup, and current reporting, then agree on the most useful priorities.</p>
+          </details>
+          <details>
+            <summary>Do you set up tracking as well as campaigns?</summary>
+            <p>Yes. GA4 and Google Tag Manager are part of the service mix, so measurement can be considered alongside campaign planning and management.</p>
+          </details>
+          <details>
+            <summary>How do we decide which channel to use?</summary>
+            <p>We start with your audience, offer, goals, and available data. The right channel depends on where people are in their decision process and what you need to learn.</p>
+          </details>
+          <details>
+            <summary>What should I share before we talk?</summary>
+            <p>A short note about your business, target audience, current marketing, and the outcome you want is enough to start the conversation.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="shell">
+        <div class="contact-panel">
+          <div class="contact-copy">
+            <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Your next move starts here</div>
+            <h2>Let’s make your marketing work smarter.</h2>
+            <p>Share what you’re aiming for. We’ll start with a clear conversation about your goals, channels, and next steps.</p>
+          </div>
+          <div class="contact-action">
+            <a class="whatsapp-button" href="https://wa.me/881677722090?text=Hi%20Advertising%20Spider%2C%20I%27d%20like%20to%20discuss%20my%20marketing%20goals." target="_blank" rel="noopener noreferrer" aria-label="Start a WhatsApp chat with Advertising Spider at +881 6777 22090">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.2 11.7a8.1 8.1 0 0 1-12 7.1L4 20l1.3-4.1a8.1 8.1 0 1 1 14.9-4.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.8 8.2c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.6 1.5c.1.2.1.4-.1.6l-.5.6c-.2.2-.2.3 0 .6.5.8 1.1 1.4 2 1.9.3.2.4.2.6-.1l.6-.7c.2-.2.4-.2.6-.1l1.4.7c.2.1.3.2.3.4 0 .3-.2 1.1-.7 1.5-.5.5-1.2.7-1.8.6-.5-.1-1.3-.3-2.3-.9-1.7-1-2.8-2.8-3-3.1-.3-.5-.8-1.3-.8-2s.4-1.1.6-1.4Z" fill="currentColor"/></svg>
+              Start a WhatsApp chat
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="phone-link" href="https://wa.me/881677722090" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 20 20" width="16" height="16" fill="none" aria-hidden="true"><path d="M5.5 2.5 8 2l1.2 3-1.6 1.5a11 11 0 0 0 5.9 5.9L15 10.8l3 1.2-.5 2.5c-.2 1-1.1 1.7-2.2 1.5A15 15 0 0 1 4 4.7c-.2-1.1.5-2 1.5-2.2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              +881 6777 22090
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="#top" aria-label="Advertising Spider, back to top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="5" fill="currentColor"/><ellipse cx="20" cy="20" rx="7.5" ry="15" stroke="currentColor" stroke-width="1.7"/><ellipse cx="20" cy="20" rx="15" ry="7.5" stroke="currentColor" stroke-width="1.7"/><path d="M9 9l22 22M31 9 9 31" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="31" cy="9" r="2.3" fill="#f1785c"/></svg>
+        </span>
+        <span class="brand-word">Advertising Spider</span>
+      </a>
+      <p class="footer-note">Performance marketing, made measurable.</p>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="https://wa.me/881677722090" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const primaryNav = document.querySelector("#primary-nav");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      primaryNav.classList.toggle("is-open", !isOpen);
+    });
+    primaryNav.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        primaryNav.classList.remove("is-open");
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+        menuToggle.setAttribute("aria-expanded", "false");
+        primaryNav.classList.remove("is-open");
+        menuToggle.focus();
+      }
+    });
+  </script>
 </body>
 </html>
