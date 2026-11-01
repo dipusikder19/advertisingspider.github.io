@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f8f4">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Admin login — Advertising Spider</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main class="admin-shell">
+    <a class="brand" href="../" aria-label="Advertising Spider home">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span>Advertising Spider</span>
+    </a>
+
+    <section id="setupNotice" class="notice setup-notice" hidden>
+      <span class="notice-icon" aria-hidden="true">⚙</span>
+      <h1>Backend setup needed</h1>
+      <p>This admin area is ready, but it needs your Supabase project URL and public key before login can work.</p>
+      <a class="button" href="https://github.com/dipusikder19/advertisingspider.github.io/blob/main/backend/SETUP.md">Open setup guide <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section id="loginView" class="panel login-panel">
+      <span class="eyebrow">Private workspace</span>
+      <h1>Admin login</h1>
+      <p class="muted">Sign in with the administrator account created for this website.</p>
+      <form id="loginForm">
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <p id="loginMessage" class="form-message" aria-live="polite"></p>
+        <button class="button" type="submit">Sign in</button>
+      </form>
+      <a class="back-link" href="../">← Back to website</a>
+    </section>
+
+    <section id="dashboardView" class="dashboard" hidden>
+      <header class="dashboard-header">
+        <div>
+          <span class="eyebrow">Website content</span>
+          <h1>Service categories</h1>
+          <p class="muted">Changes save to the database and appear on the public site.</p>
+        </div>
+        <button id="signOutButton" class="button button-quiet" type="button">Sign out</button>
+      </header>
+      <p id="dashboardMessage" class="form-message" aria-live="polite"></p>
+      <div id="serviceList" class="service-list"></div>
+      <a class="back-link" href="../">← View website</a>
+    </section>
+  </main>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
