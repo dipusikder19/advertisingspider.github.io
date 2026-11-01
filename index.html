@@ -657,7 +657,6 @@
           openedByHover = false;
         }
       });
-      serviceMenu.addEventListener("focusin", () => { serviceMenu.open = true; });
       serviceMenu.addEventListener("focusout", (event) => {
         if (!serviceMenu.contains(event.relatedTarget)) {
           serviceMenu.open = false;
